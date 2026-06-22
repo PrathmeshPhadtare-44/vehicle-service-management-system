@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p th:if="${errorMessage}"
+   th:text="${errorMessage}"></p>
+
+<form action="/register" method="post">
+
+    <label>Email</label>
+    <input type="email" name="email">
+
+    <br><br>
+
+    <label>Password</label>
+    <input type="password" name="password">
+
+    <br><br>
+
+    <label>Name</label>
+    <input type="text" name="name">
+
+    <br><br>
+
+    <label>Phone Number</label>
+    <input type="text" name="phoneNumber">
+
+    <br><br>
+
+    <label>City</label>
+    <input type="text" name="city">
+
+    <br><br>
+
+    <button type="submit">
+        Register
+    </button>
+
+</form>
+
+</body>
+</html>
