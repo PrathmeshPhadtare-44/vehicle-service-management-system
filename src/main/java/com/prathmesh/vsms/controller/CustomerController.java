@@ -1,12 +1,18 @@
 package com.prathmesh.vsms.controller;
 
 
+import com.prathmesh.vsms.dto.CustomerLoginDto;
+import com.prathmesh.vsms.dto.CustomerRegisterDto;
 import com.prathmesh.vsms.entity.Customer;
 import com.prathmesh.vsms.service.CustomerService;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CustomerController {
@@ -15,13 +21,29 @@ public CustomerController(CustomerService customerService){
     this.customerService = customerService;
 }
     @GetMapping("/register")
-    public String registerPage(){
+    public String registerPage(Model model){
+        model.addAttribute(
+                "customerRegisterDto",
+                new CustomerRegisterDto()
+        );
+
     return "register";
     }
+
+
     @PostMapping("/register")
-    public String registerData(Customer customer , Model model){
+    public String registerData(@Valid CustomerRegisterDto dto,
+                                BindingResult result,
+                               Model model){
+    if (result.hasErrors()){
+        return "register";
+    }
+//    if (!dto.getPassword().equals(dto.getConfirmPassword())){
+//        model.addAttribute("errorMessage", "Passwords do not match");
+//        return "register";
+//    }
         try {
-                customerService.register(customer);
+                customerService.register(dto);
                 model.addAttribute(
                         "successMessage" , "Registration Successful"
                 );
@@ -34,5 +56,7 @@ public CustomerController(CustomerService customerService){
             return "register";
         }
     }
+
+
 
 }

@@ -2,45 +2,159 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .error-message {
+            background-color: #ffeef0;
+            color: #d9383a;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #d9383a;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+    </style>
 </head>
 <body>
 
-<p th:if="${errorMessage}"
-   th:text="${errorMessage}"></p>
+<div class="form-container">
 
-<form action="/register" method="post">
+    <p class="error-message"
+       th:if="${errorMessage}"
+       th:text="${errorMessage}"></p>
 
-    <label>Email</label>
-    <input type="email" name="email">
+    <form  th:object="${customerRegisterDto}" action="/register" method="post">
 
-    <br><br>
+        <div class="form-group">
+            <small class="field-error"
+                   th:if="${#fields.hasErrors('email')}"
+                   th:errors="*{email}">
+            </small>
 
-    <label>Password</label>
-    <input type="password" name="password">
+            <label>Email</label>
+            <input type="email" name="email" required>
+        </div>
 
-    <br><br>
+        <div class="form-group">
+            <small class="field-error"
+                   th:if="${#fields.hasErrors('password')}"
+                   th:errors="*{password}">
+            </small>
 
-    <label>Name</label>
-    <input type="text" name="name">
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
 
-    <br><br>
+        <div class="form-group">
+            <small class="field-error"
+                   th:if="${#fields.hasErrors('confirmPassword')}"
+                   th:errors="*{confirmPassword}">
+            </small>
 
-    <label>Phone Number</label>
-    <input type="text" name="phoneNumber">
+            <label>Confirm Password</label>
+            <input type="password" name="confirmPassword" required>
+        </div>
 
-    <br><br>
+        <div class="form-group">
+            <small class="field-error"
+                   th:if="${#fields.hasErrors('name')}"
+                   th:errors="*{name}">
+            </small>
 
-    <label>City</label>
-    <input type="text" name="city">
+            <label>Name</label>
+            <input type="text" name="name" required>
+        </div>
 
-    <br><br>
+        <div class="form-group">
+            <small class="field-error"
+                   th:if="${#fields.hasErrors('phoneNumber')}"
+                   th:errors="*{phoneNumber}">
+            </small>
 
-    <button type="submit">
-        Register
-    </button>
+            <label>Phone Number</label>
+            <input type="text" name="phoneNumber">
+        </div>
 
-</form>
+        <div class="form-group">
+            <small class="field-error"
+                   th:if="${#fields.hasErrors('city')}"
+                   th:errors="*{city}">
+            </small>
+
+            <label>City</label>
+            <input type="text" name="city">
+        </div>
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+</div>
 
 </body>
 </html>
