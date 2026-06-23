@@ -21,6 +21,24 @@ public class CustomerService {
     }
 
 
+    public Customer login(CustomerLoginDto dto){
+        Optional<Customer> customerOptional = customerRepository.findByEmail(dto.getEmail());
+
+        if (customerOptional.isPresent()){
+           Customer customer = customerOptional.get();
+            if (passwordEncoder.matches(dto.getPassword()
+            , customer.getPassword())){
+                return customer;
+            }
+            else {
+                throw new RuntimeException("Invalid password");
+            }
+        }
+        else {
+            throw new RuntimeException("Invalid email");
+        }
+
+    }
 
     public Customer register(CustomerRegisterDto dto){
         Customer customer = new Customer();

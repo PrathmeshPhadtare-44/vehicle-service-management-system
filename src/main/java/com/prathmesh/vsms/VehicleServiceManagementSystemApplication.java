@@ -8,7 +8,7 @@ public class VehicleServiceManagementSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VehicleServiceManagementSystemApplication.class, args);
-		System.out.println("Spring boot project starts here!");
+		//System.out.println("Spring boot project starts here!");
 	}
 
 }

@@ -57,6 +57,35 @@ public CustomerController(CustomerService customerService){
         }
     }
 
+    @GetMapping("/login")
+    public String loginPage(){
+    return "login";
+    }
 
+    @PostMapping("/login")
+    public String loginData(@Valid CustomerLoginDto dto,
+                            BindingResult result,
+                            HttpSession session,
+                            Model model){
+    if (result.hasErrors()){
+        return  "login";
+    }
+try {
+    Customer customer = customerService.login(dto);
+
+    session.setAttribute(
+            "userName",
+            customer.getName()
+    );
+
+    return "home";
+}
+catch (RuntimeException e){
+    model.addAttribute("errorMessage"
+    , e.getMessage());
+    return "login";
+}
+
+    }
 
 }
