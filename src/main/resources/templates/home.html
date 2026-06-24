@@ -6,13 +6,24 @@
 </head>
 <body>
 <h1>THis is the home page!</h1>
-<p th:if="${session.userName != null}"
-   th:text="${session.userName}">
+<p th:if="${session.user != null}"
+   th:text="'Welcome, ' + ${session.user.name}">
 </p>
+
 <p th:if="${successMessage}"
-   th:text="${successMessage}"></p>
-<a href="/register" type="GET">Register Customer !</a><br>
-<a href="/login" type="GET">Login Customer !</a>
+   th:text="${successMessage}">
+</p>
+
+<!-- Show when NOT logged in -->
+<div th:if="${session.user == null}">
+    <a href="/register">Register</a><br>
+    <a href="/login">Login</a>
+</div>
+
+<!-- Show when logged in -->
+<div th:if="${session.user != null}">
+    <a href="/logout">Logout</a>
+</div>
 
 </body>
 </html>

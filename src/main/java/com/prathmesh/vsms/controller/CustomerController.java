@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CustomerController {
+
 private CustomerService customerService;
 public CustomerController(CustomerService customerService){
     this.customerService = customerService;
 }
+    // =========================
+    // Registration
+    // =========================
+
     @GetMapping("/register")
     public String registerPage(Model model){
         model.addAttribute(
@@ -56,6 +61,9 @@ public CustomerController(CustomerService customerService){
             return "register";
         }
     }
+    // =========================
+    // Login
+    // =========================
 
     @GetMapping("/login")
     public String loginPage(){
@@ -74,9 +82,8 @@ try {
     Customer customer = customerService.login(dto);
 
     session.setAttribute(
-            "userName",
-            customer.getName()
-    );
+            "user",
+                customer    );
 
     return "home";
 }
@@ -87,5 +94,17 @@ catch (RuntimeException e){
 }
 
     }
+
+    // =========================
+    // Logout
+    // =========================
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+    session.invalidate();
+    return "home";
+
+    }
+
 
 }
