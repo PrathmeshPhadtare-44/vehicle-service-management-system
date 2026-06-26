@@ -1,0 +1,9 @@
+[33ma477192[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: rebase (finish): returning to refs/heads/master
+[33ma477192[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{1}: rebase (start): checkout a477192fde49f619443d5f219746eea9b0a62c3e
+[33ma71b213[m HEAD@{2}: commit: Add vehicle CRUD.
+[33ma477192[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{3}: commit: Add Global Exception for Validation.
+[33m6bbb80a[m HEAD@{4}: commit: Implement customer logout feature
+[33m8ffb8e6[m HEAD@{5}: commit: Customer login process and session for Longed user complete.
+[33m6e2f8b5[m HEAD@{6}: commit: Customer register process improvement added dto for validation.
+[33m24b4820[m HEAD@{7}: commit: Customer register process complete
+[33m69abea8[m HEAD@{8}: commit (initial): Initial Spring Boot project
