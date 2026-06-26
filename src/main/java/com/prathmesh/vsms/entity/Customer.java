@@ -4,6 +4,8 @@ package com.prathmesh.vsms.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="customers")
 @Getter
@@ -30,4 +32,7 @@ public class Customer {
 
     @Column(length = 100)
     private String city;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Vehicle> vehicles;
 }

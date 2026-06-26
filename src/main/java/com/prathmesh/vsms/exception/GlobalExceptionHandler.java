@@ -29,17 +29,12 @@ public class GlobalExceptionHandler {
                     error.setMessage(error.getMessage());
                     error.setTimestamp(LocalDateTime.now());
                     return ResponseEntity.badRequest().body(error);
-    }
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponseDto> resourceNotFound(ResourceNotFoundException ex)
-    {
-        ErrorResponseDto error = new ErrorResponseDto();
-        error.setStatus(HttpStatus.NOT_FOUND.value());
-        error.setMessage(List.of(ex.getMessage()));
-        error.setTimestamp(LocalDateTime.now());
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(error);
-    }
+//        String error = Objects.requireNonNull(ex.getBindingResult()
+//                        .getFieldError())
+//                         .getDefaultMessage();
+//        return ResponseEntity.badRequest()
+//                .body(error);
 
+    }
 }
