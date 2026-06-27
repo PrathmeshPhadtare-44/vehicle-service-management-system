@@ -4,6 +4,8 @@ import com.prathmesh.vsms.enums.VehicleType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -15,7 +17,7 @@ import lombok.*;
 public class Vehicle {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private long vehicleId;
+    private Long vehicleId;
 
     @Column(unique = true , nullable = false , length = 20)
     private String vehicleNumber;
@@ -28,6 +30,10 @@ public class Vehicle {
 
 
     @ManyToOne
-    @JoinColumn(name = "customerId")
+    @JoinColumn(name = "customerId" , nullable = false)
     private Customer customer;
+
+    @OneToMany(mappedBy = "vehicle")
+    private List<ServiceRecord> serviceRecord;
+
 }
