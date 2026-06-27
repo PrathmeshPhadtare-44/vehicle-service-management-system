@@ -27,7 +27,7 @@ public class ServiceRecordRestController {
 
     @PostMapping("/services/new")
     public ResponseEntity<NewServiceRecordResponseDto> addNewServiceRecord(@Valid NewServiceRecordRequestDto dto){
-
+return null;
     }
 }
 
