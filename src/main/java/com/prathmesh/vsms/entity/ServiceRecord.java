@@ -36,7 +36,6 @@ public class ServiceRecord {
     private String description;
 
     @NotNull(message = "Cost is required")
-    @Positive(message = "Cost must be greater than 0")
     @Column(nullable = false)
     private BigDecimal cost;
 

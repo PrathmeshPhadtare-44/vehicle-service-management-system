@@ -5,6 +5,7 @@ import com.prathmesh.vsms.dto.NewServiceRecordResponseDto;
 import com.prathmesh.vsms.dto.ServiceRecordHistoryResponseDto;
 import com.prathmesh.vsms.service.impl.ServiceRecordServiceImpl;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,10 @@ public class ServiceRecordRestController {
     }
 
     @PostMapping("/services/new")
-    public ResponseEntity<NewServiceRecordResponseDto> addNewServiceRecord(@Valid NewServiceRecordRequestDto dto){
-return null;
+    public ResponseEntity<NewServiceRecordResponseDto> addNewServiceRecord(@Valid @RequestBody NewServiceRecordRequestDto dto){
+NewServiceRecordResponseDto dto1 = serviceRecordServiceImpl.save(dto);
+return ResponseEntity.status(HttpStatus.CREATED)
+        .body(dto1);
     }
 }
 

@@ -3,7 +3,11 @@ package com.prathmesh.vsms.dto;
 import com.prathmesh.vsms.enums.ServiceType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class NewServiceRecordRequestDto {
 
 
