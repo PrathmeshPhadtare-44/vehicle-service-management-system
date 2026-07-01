@@ -36,7 +36,7 @@ public ResponseEntity<List<BookedServiceResponseDto>> getAllBookedService(){
         UpdateServiceStatusResponseDto response = adminServiceRecordServiceImp.startService(id);
                 return  ResponseEntity.ok(response);
     }
-    @PatchMapping("/admin/service-records/{id}")
+    @PatchMapping("/service-records/{id}")
     public ResponseEntity<AdminServiceRecordResponseByIdDto> updateServiceRecord(
             @PathVariable Long id,
             @Valid @RequestBody UpdateServiceRecordRequestDto request){
